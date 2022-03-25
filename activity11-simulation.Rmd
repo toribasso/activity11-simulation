@@ -90,8 +90,26 @@ Using a similar process, obtain Exponentially distributed variable (`?rexp`) wit
 Obtain a sample of 1,000 observations and a sample of 30 observations.
 Then, calculate the mean and standard deviation of each sample and discuss how the values are similar and how they differ.
 
+```{r SimExp1000}
+exp_samp_1000 <- tibble(
+  values = rexp(n = 1000, rate = 0.02)
+)
+exp_samp_30 <- tibble(
+  values = rexp(n = 30, rate = 0.02)
+)
+MeanStd3 <- exp_samp_1000 %>%
+ summarize(mean1000=mean(values),stdev1000=sd(values))
+view(MeanStd3)
+MeanStd4 <- exp_samp_30 %>%
+ summarize(mean30=mean(values),stdev30=sd(values))
+view(MeanStd4)
+```
 
-
+**Response**: For the 1000 samples, the mean was 50.24338 and the standard deviation
+is 51.45936. For the 30 samples, the mean=42.08908 and standard deviation=31.20613. For
+the 30 samples, the standard deviation is tighter and the mean was lower. As the sample
+simulated increased the width of the distribution and increased the number of extreem 
+values.
 
 ![](README-img/noun_pause.png) **Planned Pause Point**: If you have any questions, contact your instructor. Otherwise feel free to continue on.
 
