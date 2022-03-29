@@ -127,7 +127,20 @@ This function should produce a dataset with `n` rows.
 You should **not** use the default parameter options for these distributions (e.g., your Normal data should not have a mean of 0 or a standard deviation of 1).
 Test your function with `n = 30` and `n = 1000`.
 
-
+```{r function}
+generate_n_samples <- function(num){
+  Normal_Dist <- rnorm(n = num, mean = 50, sd = 10)
+  Exponential_Dist <- rexp(n = num, rate = 0.02)
+  ChiSquare_Dist <- rchisq(num, 10)
+  Uniform_Dist <- dunif(num, min=0, max=1)
+  
+  alldist = data.frame(Normal_Dist,Exponential_Dist,ChiSquare_Dist,Uniform_Dist)
+  
+  View(alldist)
+}
+#test
+generate_n_samples(100)
+```
 
 
 Keep the following information in mind for the rest of this activity.
@@ -144,10 +157,10 @@ These are the "population values".
 
 | Distribution | Mean       | SD         |
 |--------------|------------|------------|
-| Normal       |            |            |
-| Exponential  |            |            |
-| Chi-square   |            |            |
-| Uniform      |            |            |
+| Normal       |    50      |     10     |
+| Exponential  |    50      |     50     |
+| Chi-square   |    10      |     4.47   |
+| Uniform      |    0.5     |    0.29    |
 
 
 Below I provide you with a function that calculates the sample mean for each column/distribution.
@@ -165,6 +178,10 @@ Discuss how the means compares for each distribution.
 Note that it doesn't make sense to compare means/standard deviations across the distributions.
 
 
+```{r Nested Functions}
+generate_n_samples(30)
+sample_mean(alldist)
+```
 
 
 ## Many samples
